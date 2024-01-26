@@ -19,10 +19,7 @@ jobs:
       # Setup key
       - run: set -eu
       - run: mkdir "$HOME/.ssh"
-      - run: echo "$" > "$HOME/.ssh/key"
-      - run: chmod 600 "$HOME/.ssh/key"
-      # Build
-      - run: npm ci
-      - run: npm run build
+      - run: echo "$" > "$HOME/.ssh/beget"
+      - run: chmod 600 "$HOME/.ssh/beget"      
       # Deploy
-      - run: cd app && rsync -e "ssh -p 20022 -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . igorjvv2.beget.tech:/public_html/igorwoo/wp-content/themes/az-start
+      - run: cd app && rsync -e "ssh -p 20022 -i $HOME/.ssh/beget -o StrictHostKeyChecking=no" --archive --compress --delete . igorjvv2.beget.tech:/public_html/igorwoo/wp-content/themes/az-start
